@@ -8,3 +8,6 @@ It is quite easy to use term see the table below for Term commands (modifiers) w
 | -        | Delete a note  | - note
 | =        | Edit a note    | = note
 | /        | Exit the app   | /
+
+## Dependencies
+Term only needs the python **RICH** library.
