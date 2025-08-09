@@ -9,5 +9,8 @@ It is quite easy to use term see the table below for Term commands (modifiers) w
 | =        | Edit a note    | = note
 | /        | Exit the app   | /
 
+## Save Location
+You can set your save location by changing the `notes_location` variable and either run the script or use `pyinstaller` to make it an executable with your save location.
+
 ## Dependencies
 Term only needs the python **RICH** library.
