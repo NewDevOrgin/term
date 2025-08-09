@@ -6,7 +6,8 @@ import glob
 import ast
 import os
 
-notes = glob.glob("*.term")
+notes_location = "Notes"
+notes = glob.glob(f"{notes_location}/*.term")
 current_heading = ""
 
 class note():
@@ -52,29 +53,29 @@ while True:
         new_body = input("> ")
         new_note = {"heading": current_heading, "date": str(dt.datetime.now().strftime("%Y-%m-%d %H:%M")), "body": new_body, "id": r.randint(1000, 9999)}
         note(new_note)
-        notes.append(current_heading + ".term")
-        with open(f"{current_heading}.term", "w") as file:
+        notes.append(f"{notes_location}/{current_heading}.term")
+        with open(f"{notes_location}/{current_heading}.term", "w") as file:
             file.write(f"{new_note}")
             file.close()
         print(f'Note "{current_heading}" created!')
         time.sleep(1)
     elif action_mod == "-":
         try:
-            os.system(f"rm {current_heading}.term")
-            notes.remove(current_heading + ".term")
+            os.system(f"rm {notes_location}/{current_heading}.term")
+            notes.remove(f"{notes_location}/{current_heading}.term")
         except:
             console.print("Not Found!")
             time.sleep(0.5)
     elif action_mod == "=":
         console.clear()
-        with open(f"{current_heading}.term", "r") as file:
+        with open(f"{notes_location}/{current_heading}.term", "r") as file:
             read_note = file.read()
             file.close()
         print(f"Body: {ast.literal_eval(read_note)['body']}")
         new_body = input("> ")
         new_note = {"heading": current_heading, "date": str(dt.datetime.now().strftime("%Y-%m-%d %H:%M")), "body": new_body, "id": r.randint(1000, 9999)}
         note(new_note)
-        with open(f"{current_heading}.term", "w") as file:
+        with open(f"{notes_location}/{current_heading}.term", "w") as file:
             file.write(f"{new_note}")
             file.close()
         print(f'Note "{current_heading}" edited!')
